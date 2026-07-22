@@ -1,0 +1,9 @@
+target
+ui/node_modules
+ui/dist
+steward-data
+.git
+*.db
+*.db-wal
+*.db-shm
+.env

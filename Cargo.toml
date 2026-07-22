@@ -1,0 +1,50 @@
+[workspace]
+
+[package]
+name = "steward"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Point a single binary at your existing Postgres and get a Django-admin-quality panel: introspected CRUD, code-first TOML customization, auth, audit log, dashboards."
+repository = "https://github.com/De-Rus/steward"
+publish = false
+
+[[bin]]
+name = "steward"
+path = "src/main.rs"
+
+[dependencies]
+axum = { version = "0.7", features = ["multipart"] }
+axum-extra = { version = "0.9", features = ["cookie"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+tower-http = { version = "0.6", features = ["trace"] }
+sqlx = { version = "0.8", default-features = false, features = [
+  "runtime-tokio", "tls-rustls", "postgres", "chrono", "uuid", "json",
+] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+rusqlite_migration = "1.3.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+hcl-rs = "0.19"
+hcl-edit = "0.9"
+clap = { version = "4", features = ["derive", "env"] }
+argon2 = "0.5"
+rand = "0.8"
+chrono = { version = "0.4", features = ["serde"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+rust-embed = { version = "8", features = ["include-exclude"] }
+mime_guess = "2"
+time = "0.3"
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+rustls = { version = "0.23", default-features = false, features = ["ring"] }
+futures = "0.3"
+arc-swap = "1"
+
+[dev-dependencies]
+toml = "0.8"
